@@ -1,0 +1,15 @@
+@import url('https://fonts.googleapis.com/css2?family=Noto+Serif+Display:ital,wght@1,300&family=Poppins:wght@200&display=swap');
+
+*{
+    font-family: 'Noto Serif Display', serif;
+    font-family: 'Poppins', sans-serif;
+}
+
+h1 {
+    color: #000;
+}
+
+body{
+    background: #EDE7B1;
+}
+
