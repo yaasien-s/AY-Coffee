@@ -2,14 +2,14 @@
   <div class="login">
       <h1 class="my-4">Login</h1>
       
-      <form action="" id="login-form">
-        <label for="">Email</label>
-        <input type="text" name="" id="">
+      <form @submit.prevent="login" id="login-form">
+        <label for="" >Email</label>
+        <input type="email" name="" id="" v-model="email">
 
-        <label for="">Password</label>
-        <input type="text" name="" id="">
+        <label for="" >Password</label>
+        <input type="password" name="" id="" v-model="password">
 
-        <button class="my-4">Sign in</button>
+        <button type="submit" class="my-4" @click="login">Sign in</button>
 
         <p style="font-weight: 600;">Not a member? <a href="#register">Create an account</a></p>
       </form>
@@ -19,8 +19,36 @@
 
 <script>
 export default {
-
-}
+  data() {
+    return {
+      email: "",
+      password: "",
+    };
+  },
+  methods: {
+  login(){
+    fetch('https://pos-fj.herokuapp.com/users', {
+     method: 'PATCH',
+     body: JSON.stringify({
+      email: this.email,
+      password: this.password,
+  }),
+  headers: {
+    'Content-type': 'application/json; charset=UTF-8',
+  },
+})
+  .then((response) => response.json())
+  .then((json) => {
+   localStorage.setItem("jwt", json.jwt);
+   alert("User logged in");
+   this.$router.push({ name: "Products"});
+  })
+  .catch((err) => {
+    alert(err);
+  });
+  },
+ },
+};
 </script>
 
 <style>
