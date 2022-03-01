@@ -1,8 +1,7 @@
 <template>
     <div class="cart">
         <h1>Cart</h1>
-        <h3 style="font-weight: 600;"><a href="#cart">SHOPPING CART</a> <span style="color: grey;"> > </span>
-            <a href="#">CHECKOUT DETAILS</a> <span style="color: grey;"> > </span>
+        <h3 style="font-weight: 600;">SHOPPING CART<span style="color: grey;"> > </span>
             ORDER COMPLETE</h3>
         <button style="text-transform: uppercase;"><a href="#products">Return to shop</a></button>
     </div>

@@ -4,16 +4,16 @@
 
     <form action="">
       <label for="">Full Name <span>*</span></label>
-      <input type="text" required>
+      <input type="fullName" required v-model="fullName">
 
       <label for="">Email <span>*</span></label>
-      <input type="text" required>
+      <input type="email" required v-model="email">
 
       <label for="">Contact Number <span>*</span></label>
-      <input type="text" required>
+      <input type="contact" required v-model="contact">
 
       <label for="">Password <span>*</span></label>
-      <input type="text" required>
+      <input type="password" required v-model="password">
 
       <button type="submit" class="my-4">Sign Up</button>
 
@@ -23,7 +23,7 @@
   </div>
 </template>
 
-<style>
+<style scoped>
 .register {
   margin-top: 150px;
   padding-top: 20px;
@@ -51,10 +51,6 @@ form button {
   height: 40px;
   transition: 00.3s;
   font-weight: 600;
-}
-
-input {
-  opacity: 0.5;
 }
 
 form button:hover {
