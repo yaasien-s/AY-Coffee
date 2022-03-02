@@ -4,10 +4,10 @@
 
     <form @submit.prevent="login" id="login-form">
       <label for="">Email</label>
-      <input type="email" name="" id="" v-model="email">
+      <input type="email" name="" id="" v-model="email" required>
 
       <label for="">Password</label>
-      <input type="password" name="" id="" v-model="password">
+      <input type="password" name="" id="" v-model="password" required>
 
       <button type="submit" class="my-4" @click="login">Sign in</button>
 
@@ -27,7 +27,7 @@
     },
     methods: {
       login() {
-        fetch('https://pos-fj.herokuapp.com/users', {
+        fetch('https://collab-backend-pos.herokuapp.com/users', {
             method: 'PATCH',
             body: JSON.stringify({
               email: this.email,

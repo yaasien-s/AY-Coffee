@@ -14,7 +14,7 @@
       <div class="modal-dialog">
         <div class="modal-content">
           <div class="modal-header">
-            <h5 class="modal-title" id="exampleModalLabel">Add Phone</h5>
+            <h5 class="modal-title" id="exampleModalLabel">Add Product</h5>
 
             <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
           </div>
@@ -34,7 +34,7 @@
       <div class="row">
 
 
-        <div v-for="product of products" :key="product.name" class="card mx-5 my-5 col-sm-2 p-0">
+        <div v-for="product of products" :key="product.name" class="card mx-5 my-5 col-sm-3 p-0">
           <img :src="product.img" class="card-img-top" alt="...">
           <div class="card-body">
             <h5 class="card-title">{{product.title}}</h5>
@@ -64,7 +64,7 @@
     // fetching product
     created() {
       if (localStorage.getItem("jwt")) {
-        fetch("https://pos-fj.herokuapp.com/products", {
+        fetch("https://collab-backend-pos.herokuapp.com/products", {
             method: "GET",
             headers: {
               "Content-type": "application/json; charset=UTF-8",
@@ -76,7 +76,7 @@
             this.products = json;
             this.products.forEach(async (product) => {
               await fetch(
-                  "https://pos-fj.herokuapp.com/products" + product.name, {
+                  "https://collab-backend-pos.herokuapp.com/products" + product.name, {
                     method: "GET",
                     headers: {
                       "Content-type": "application/json; charset=UTF-8",
@@ -120,18 +120,17 @@
   }
 
   .card-body {
-    border-top: 2px solid black;
+    /* border-top: 2px solid black; */
     margin-top: 5px;
     background: transparent;
     text-align: initial;
   }
 
   .card-img-top {
-    width: 185px;
-    height: 200px;
+    width: 85%;
+    height: 85%;
     object-fit: cover;
-    margin-right: auto;
-    margin-left: auto;
+
   }
 
   #product-btn {
