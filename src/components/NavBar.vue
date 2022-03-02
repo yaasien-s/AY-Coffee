@@ -13,6 +13,7 @@
     <router-link to="/products">Shop</router-link>
     <router-link to="/register">Register</router-link>
     <router-link to="/login">Login</router-link>
+    <router-link @click="logout" to="/">Logout</router-link>
     <hr id="hr-b">
   </div>
   <router-view v-slot="{ Component }">
@@ -24,7 +25,12 @@
 
 <script>
 export default {
-
+  props: ['isloggedin'],
+  methods: {
+    logout() {
+      localStorage.clear();
+    }
+  }
 }
 </script>
 

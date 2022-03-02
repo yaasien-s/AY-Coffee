@@ -37,7 +37,8 @@
         <div v-for="product of products" :key="product.name" class="card mx-5 my-5 col-sm-3 p-0">
           <img :src="product.img" class="card-img-top" alt="...">
           <div class="card-body">
-            <h5 class="card-title">{{product.title}}</h5>
+            <!-- <h5 class="card-title" style="font-weight: 600;">{{product.title}}</h5> -->
+            <h6 style="font-weight: 600;">{{product.description}}</h6>
             <p class="card-text text-secondary">{{product.category}}</p>
             <p class="card-text text-dark" style="font-weight: 600;">R {{product.price}}</p>
             <a href="#" class="btn" id="product-btn">Add to cart</a>
@@ -124,12 +125,19 @@
     margin-top: 5px;
     background: transparent;
     text-align: initial;
+    margin-left: 10px;
+  }
+
+  .card-body .text-secondary {
+    color: #9A6D38 !important;
+    font-weight: 600;
   }
 
   .card-img-top {
     width: 85%;
     height: 85%;
     object-fit: cover;
+    margin-inline: auto;
 
   }
 
