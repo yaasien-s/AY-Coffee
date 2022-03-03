@@ -1,10 +1,10 @@
 <template>
-  <div class="register">
+  <div class="register" @submit.prevent="register">
     <h1 class="my-4">Create An Account</h1>
 
     <form action="">
       <label for="">Full Name <span>*</span></label>
-      <input type="fullName" required v-model="fullName">
+      <input type="name" required v-model="fullname">
 
       <label for="">Email <span>*</span></label>
       <input type="email" required v-model="email">
@@ -22,6 +22,45 @@
 
   </div>
 </template>
+
+<script>
+export default {
+  data() {
+    return {
+      fullname: "",
+      email: "",
+      contact: "",
+      password: "",
+    };
+  },
+  methods: {
+    register() {
+      fetch("https://collab-backend-pos.herokuapp.com/users", {
+        method: "POST",
+        body: JSON.stringify({
+          fullname: this.fullname,
+          email: this.email,
+          contact: this.contact,
+          password: this.password,
+        }),
+        headers: {
+          "Content-type": "application/json; charset=UTF-8",
+        },
+      })
+        .then((response) => response.json())
+        .then((json) => {
+          this.msg = `${ this.name } registered Successfully`;
+          alert("redirecting to Login...");
+          localStorage.setItem("jwt", json.jwt);
+          this.$router.push({ name: "Products" });
+        })
+        .catch((err) => {
+          alert(err);
+        });
+    },
+  },
+};
+</script>
 
 <style scoped>
 .register {
